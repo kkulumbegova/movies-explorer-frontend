@@ -7,10 +7,10 @@ export default function SavedMovies({ onMobileMenu }) {
   return (
     <>
       <Header onMobileMenu={onMobileMenu}/>
-      <section className="movies section">
+      <main className="movies section">
         <SearchForm />
         <MoviesCardList />
-      </section>
+      </main>
       <Footer />
     </>
   );

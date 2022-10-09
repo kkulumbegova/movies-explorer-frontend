@@ -19,6 +19,11 @@
       margin: 0px;
     }
 }
+@media screen and (max-width: 540px){
+  .main__title_border-black {
+    border-color: rgb(0, 0, 0);
+  }
+}
 
 .main__title_grey {
     font-size: 18px;

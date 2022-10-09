@@ -2,7 +2,11 @@
     background: rgba(39, 39, 39, 1);
     color: rgba(255, 255, 255, 1);
 }
-
+@media screen and (max-width: 540px) {
+    .techs {
+        background: rgba(32, 32, 32, 1);
+    }
+}
 .techs__container {
     display: flex;
     flex-direction: column;

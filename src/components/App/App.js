@@ -21,14 +21,13 @@ function App() {
     <>
       {/* // <CurrentUserContext.Provider value={currentUser}> */}
       <div className="page__container">
+        <Switch>
         <Route path="/signup">
           <Register />
         </Route>
         <Route path="/signin">
           <Login />
         </Route>
-
-        <Switch>
           <Route path="/profile">
             <Profile onMobileMenu={handleMenuClick}/>
           </Route>
@@ -41,7 +40,7 @@ function App() {
           <Route exact path="/">
             <Main />
           </Route>
-          <Route path='/*'>
+          <Route path='*'>
             <NotFound/>
           </Route>
         </Switch>

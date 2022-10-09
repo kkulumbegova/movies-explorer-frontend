@@ -7,10 +7,10 @@ export default function Movies({ onMobileMenu }) {
   return (
     <>
       <Header onMobileMenu={onMobileMenu}/>
-      <section className="movies">
+      <main className="movies">
         <SearchForm />
         <MoviesCardList />
-      </section>
+      </main>
       <Footer />
     </>
   );

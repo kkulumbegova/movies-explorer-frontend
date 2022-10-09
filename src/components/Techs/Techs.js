@@ -1,7 +1,7 @@
 export default function Techs() {
     return (
       <section className="techs section section_narrow_sides">
-        <h2 className="main__title" id="Techs">
+        <h2 className="main__title main__title_border-black" id="Techs">
           Технологии
         </h2>
         <div className="techs__container">

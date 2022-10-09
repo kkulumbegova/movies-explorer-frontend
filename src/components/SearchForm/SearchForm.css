@@ -46,3 +46,6 @@
     padding: 0px;
     margin: 0px;
 }
+.search__submit:hover {
+    opacity: .5;
+}

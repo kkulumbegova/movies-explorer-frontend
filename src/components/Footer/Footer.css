@@ -5,11 +5,12 @@
     padding-top: 79px;
     padding-bottom: 20px;
 }
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 767px) {
     .footer {
-        padding-top: 70px;
+        padding-bottom: 10px;
     }
 }
+
 .footer__text {
     margin: 0px;
     font-size: 13px;
@@ -50,6 +51,7 @@
         order: 2;
         justify-content: center;
         padding-top: 30px;
+        color: rgb(139, 139, 139);
     }
 }
 

@@ -1,5 +1,5 @@
 .movie__item {
-    height: 319px;
+    min-height: 271px;
     background-color: rgb(34, 34, 34);
     border-radius: 6px;
 }
@@ -12,24 +12,8 @@
 .movie__img {
     display: block;
     margin: auto;
-}
-@media screen and (max-width: 1174px){  
-    .movie__img {
-        height: 190px;
-        width: 280px;
-    }
-}
-@media screen and (max-width: 999px){  
-    .movie__img {
-        height: 190px;
-        width: 342px;
-    }
-}
-@media screen and (max-width: 767px){  
-    .movie__img {
-        height: 168px;
-        width: 300px;
-    }
+    height: auto;
+    width: 100%;
 }
 
 .movie__button {
