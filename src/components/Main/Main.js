@@ -6,10 +6,10 @@ import Portfolio from '../Portfolio/Portfolio.js'
 import Footer from '../Footer/Footer.js';
 import Header from '../Header/Header.js';
 
-export default function Main() {
+export default function Main({ loggedIn }) {
     return (
         <>
-        <Header/>
+        <Header loggedIn={loggedIn}/>
         <main className='main-section'>
           <Promo></Promo>
           <AboutProject></AboutProject>

@@ -44,12 +44,15 @@
     }
   }
 
+.profile__field {
+    position: relative;
+}
+
 .profile__form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 17px;
     width: 418px;
 }
 @media screen and (max-width: 1023px) {
@@ -70,6 +73,8 @@
     padding-bottom: 16px;
     justify-content: space-between;
     gap: 10px;
+    position: relative;
+    margin-bottom: 17px;
 }
 .profile__field_border {
     border-bottom: 1px solid rgb(66, 66, 66);
@@ -113,6 +118,10 @@
     line-height: 16px;
     color: rgba(255, 255, 255, 1);
     cursor: pointer;
+}
+.profile__submit:disabled {
+    color: rgb(66, 66, 66);
+    pointer-events: none;
 }
 @media screen and (max-width: 1023px) {
     .profile__submit {

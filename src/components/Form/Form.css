@@ -73,6 +73,11 @@
     top: 49px;
     left: 0px;
 }
+
+.form__input-error_thin {
+    top: 26px;
+    margin-top: 4px;
+}
 .form__submit {
     width: 396px;
     height: 45px;
@@ -101,7 +106,10 @@
 .form__submit:hover {
     opacity: 0.8;
 }
-
+.form__submit:disabled {
+    background-color: rgb(157, 189, 232);
+    pointer-events: none;
+}
 .form__submit_login {
     margin: 221px 0px 16px;
 }
@@ -113,10 +121,19 @@
 }
 
 .form__submit_register {
-    margin: 134px 0px 16px;
+    margin: 14px 0px 16px;
 }
 @media screen and (max-width: 470px) {
     .form__submit_register {
         width: 260px;
     }
+}
+.form__error {
+    color: rgba(238, 52, 101, 1);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+    margin: 120px auto 8px;
+
+
 }

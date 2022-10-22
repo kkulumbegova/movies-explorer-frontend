@@ -12,7 +12,7 @@
 .movie__img {
     display: block;
     margin: auto;
-    height: auto;
+    height: 200px;
     width: 100%;
 }
 
@@ -60,4 +60,9 @@
     font-weight: 400;
     line-height: 18px;
     color: rgb(139, 139, 139);
+}
+
+.movie__nothing {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
 }
