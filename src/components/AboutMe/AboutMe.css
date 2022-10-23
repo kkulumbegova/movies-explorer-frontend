@@ -137,6 +137,7 @@
     height: 327px;
     width: 100%;
     order: 2;
+    border-radius: 10px;
 }
 @media screen and (max-width: 1023px) {
     .aboutMe__photo {
