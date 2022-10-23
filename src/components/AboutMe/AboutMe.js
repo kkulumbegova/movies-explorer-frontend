@@ -1,4 +1,4 @@
-import aboutMePhoto from '../../images/aboutMe.svg'
+import aboutMePhoto from '../../images/about.svg'
 
 export default function AboutMe() {
     return (

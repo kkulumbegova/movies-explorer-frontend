@@ -116,7 +116,7 @@ function App() {
     localStorage.removeItem('token');
     localStorage.removeItem('movies');
     localStorage.removeItem('search');
-    localStorage.removeItem('isChecked');
+    localStorage.removeItem('isShort');
     setLoggedIn(false);
     setCurrentUser({});
     history.push('/');
@@ -135,7 +135,8 @@ function App() {
           <ProtectedRoute loggedIn={loggedIn} path="/profile"
             component={Profile} onMobileMenu={handleMenuClick} onUpdateUser={handleUpdateUser} onSignOut={onSignOut}/>
           <ProtectedRoute loggedIn={loggedIn} path="/movies"
-            component={Movies}  movies={movies} setMovies={setMovies} isLoading={isLoading} setIsLoading={setIsLoading} onDeleteMovie={handleDeleteMovie} onMovieSave={handleCardSave} onMobileMenu={handleMenuClick} savedMovies={savedMovies}/>
+            component={Movies}  movies={movies} setMovies={setMovies} isLoading={isLoading} setIsLoading={setIsLoading} onDeleteMovie={handleDeleteMovie} onMovieSave={handleCardSave} onMobileMenu={handleMenuClick} savedMovies={savedMovies}
+            isSavedPage={false}/>
           <ProtectedRoute loggedIn={loggedIn} path="/saved-movies"
             component={SavedMovies} onMobileMenu={handleMenuClick} savedMovies={savedMovies} onDeleteMovie={handleDeleteMovie}/>
           <Route exact path="/">

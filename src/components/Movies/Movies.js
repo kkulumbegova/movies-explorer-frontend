@@ -4,21 +4,24 @@ import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js"
 import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi.js";
+import { useLocation } from "react-router-dom";
 
-export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDeleteMovie, isLoading, setIsLoading}) {
+
+export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDeleteMovie, isLoading, setIsLoading, isSavedPage}) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredArray, setFilteredArray] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
   const [message, setMessage] = useState('');
   const [isShort, setShort] = useState(false);
-  const [movies, setMovies] = useState([])
-
+  const [movies, setMovies] = useState([]);
+const location = useLocation();
+const path = location.pathname;
+console.log(path);
 
 useEffect(() => {
-  if(localStorage.getItem('movies') && localStorage.getItem('search') && localStorage.getItem('isChecked')) {
+  if(localStorage.getItem('movies') && localStorage.getItem('search') && localStorage.getItem('isShort')) {
     setSearchTerm(localStorage.getItem('search'));
     setFilteredArray( JSON.parse(localStorage.getItem('movies')));
-    setIsChecked(localStorage.getItem('isChecked'));
+    setShort(localStorage.getItem('isShort'));
   }
 },[])
 
@@ -33,7 +36,7 @@ function searchMovies(movies, searchTerm, isShort) {
     setMessage(filteredArray.length===0 ? "Ничего не найдено" : '')
     localStorage.setItem('search', searchTerm);
     localStorage.setItem('movies', JSON.stringify(filteredArray));
-    localStorage.setItem('isChecked', isShort);
+    localStorage.setItem('isShort', isShort);
   }
 
 const sortArray = () => {
@@ -65,8 +68,6 @@ const handleCheckBoxClick = (e) => {
         <SearchForm 
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        isChecked={isChecked} 
-        setIsChecked={setIsChecked} 
         sortArray={sortArray}
         onCheckBoxClick={handleCheckBoxClick}
         isShort={isShort}
