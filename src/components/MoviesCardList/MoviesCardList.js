@@ -85,7 +85,7 @@ function checkWindowSize() {
            image={movie.image}
            duration={(movie.duration)}
            movieId={movie.id}
-           key={movie.id}
+           key={movie._id}
            country={movie.country}
            director={movie.director}
            year={movie.year}

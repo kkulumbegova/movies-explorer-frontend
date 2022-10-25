@@ -51,7 +51,7 @@
   }
   .toggle-button:checked {
     background-color: rgb(61, 220, 132);
-  }
+  } 
 .toggle-button__label {
     margin-left: 12px;
     font-size: 12px;
@@ -65,3 +65,35 @@
       margin-bottom: 42px;
   }
 }
+
+/* .toggle-button {
+  display: none;
+}
+
+.toggle-button__label{
+  width: 41px;
+  height: 26px;
+  cursor: pointer;
+}
+
+.toggle-button__label_off {
+  background: url(../../images/smalltumboff.svg) center no-repeat;
+}
+
+.toggle-button__label_on {
+  background: url(../../images/smalltumbOn.svg) center no-repeat;
+} */
+
+/* export default function ToggleButton({ isChecked, onCheck }) {
+
+  //const classNameForCheckBox = `toggle-button__label ${isChecked ? "toggle-button__label_on" :  "toggle-button__label_off"}`;
+   return (
+     <div className="toggle__container">
+       <input id="toggle-button" type="checkbox" className="toggle-button" onChange={onCheck} value={isChecked}/>
+       <label htmlFor="toggle-button" className={`toggle-button__label ${isChecked ? "toggle-button__label_on" :  "toggle-button__label_off"}`}>
+       </label>
+       <span className="toggle-button__span">Короткометражки</span>
+     </div>
+   );
+ } */
+

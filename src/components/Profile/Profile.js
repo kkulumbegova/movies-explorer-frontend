@@ -9,18 +9,18 @@ export default function Profile({onMobileMenu, onUpdateUser, onSignOut}) {
 
   const { 
     register, 
+    watch,
     setValue,
     formState: {errors, isValid},
     handleSubmit,
   } = useForm({
-    mode: "onChange"
+    mode: "onChange", defaultValues: {
+      name: currentUser.name,
+      email: currentUser.email,
+    }
   });
 
-
-  useEffect(() => {
-    setValue('name',currentUser.name);
-    setValue('email',currentUser.email);
-  }, []);
+let [name, email] = watch(['name', 'email'])
 
 const onSubmit = (data) => {
   setValue('name', data.name);
@@ -29,8 +29,11 @@ const onSubmit = (data) => {
     name: data.name,
      email: data.email
   });
-
+  currentUser.name = data.name;
+  currentUser.email = data.email;
 }
+
+const buttonClassName = `profile__submit ${(currentUser.name === name && currentUser.email === email) ? "profile__submit_disabled" : ""}`
 
   return (
     <>
@@ -82,7 +85,7 @@ const onSubmit = (data) => {
               />
               {errors?.email && <span id="email-error" className="form__input-error form__input-error_thin">{errors?.email?.message || "Что-то пошло не так..."}</span>}
             </div>
-          <button type="submit" name="submit" className="profile__submit" disabled={!isValid}>
+          <button type="submit" name="submit" className={buttonClassName} disabled={!isValid}>
             Редактировать
           </button>
         </form>

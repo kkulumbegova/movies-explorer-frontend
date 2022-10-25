@@ -4,33 +4,49 @@ import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js"
 import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi.js";
-import { useLocation } from "react-router-dom";
 
 
-export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDeleteMovie, isLoading, setIsLoading, isSavedPage}) {
+export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDeleteMovie, isLoading, setIsLoading }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredArray, setFilteredArray] = useState([]);
   const [message, setMessage] = useState('');
   const [isShort, setShort] = useState(false);
-  const [movies, setMovies] = useState([]);
-const location = useLocation();
-const path = location.pathname;
-console.log(path);
+
 
 useEffect(() => {
   if(localStorage.getItem('movies') && localStorage.getItem('search') && localStorage.getItem('isShort')) {
     setSearchTerm(localStorage.getItem('search'));
     setFilteredArray( JSON.parse(localStorage.getItem('movies')));
-    setShort(localStorage.getItem('isShort'));
+    setShort(JSON.parse(localStorage.getItem('isShort')));
   }
 },[])
 
-function searchMovies(movies, searchTerm, isShort) {
-  const filteredArray = !isShort ?
-    movies.filter(movie => {
+function searchMovies(searchTerm, isShort) {
+  if(!localStorage.getItem('moviesMoviesFromApi')) {
+    setIsLoading(true);
+    moviesApi
+      .getItems()
+      .then((movies) => {
+        localStorage.setItem('moviesMoviesFromApi', JSON.stringify(movies));
+        filter(movies, searchTerm, isShort )
+      }
+      )
+      .catch(() => {
+        setMessage('Во время запроса произошла ошибка. Возможно проблема с соединением или сервер недоступен. Подождите немного и попробуйте еще раз');
+      })
+      .finally(() => setIsLoading(false));
+  } else {
+    const movies = JSON.parse(localStorage.getItem('moviesMoviesFromApi'));
+    filter(movies, searchTerm, isShort )
+  }
+}
+
+  const filter = (moviesFromApi, searchTerm, isShort) => {
+    const filteredArray = !isShort ?
+    moviesFromApi.filter(movie => {
      return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase())})
     :
-    movies.filter(movie => {
+    moviesFromApi.filter(movie => {
       return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40})
     setFilteredArray(filteredArray);
     setMessage(filteredArray.length===0 ? "Ничего не найдено" : '')
@@ -39,26 +55,10 @@ function searchMovies(movies, searchTerm, isShort) {
     localStorage.setItem('isShort', isShort);
   }
 
-const sortArray = () => {
-    setIsLoading(true);
-      moviesApi
-        .getItems()
-        .then((movies) => {
-          setMovies(movies);
-          searchMovies(movies, searchTerm, isShort);
-        }
-        )
-        .catch(() => {
-          setFilteredArray([]);
-          setMessage('Во время запроса произошла ошибка. Возможно проблема с соединением или сервер недоступен. Подождите немного и попробуйте еще раз');
-        })
-        .finally(() => setIsLoading(false));
-}
-
-const handleCheckBoxClick = (e) => {
-  const value = e.target.checked;
+const handleCheckBoxClick = () => {
+  const value = !isShort;
   setShort(value);
-  searchMovies(movies, searchTerm, value);
+  searchMovies(searchTerm, value);
 }
 
   return (
@@ -68,7 +68,7 @@ const handleCheckBoxClick = (e) => {
         <SearchForm 
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}
-        sortArray={sortArray}
+        sortArray={searchMovies}
         onCheckBoxClick={handleCheckBoxClick}
         isShort={isShort}
         isSavedPage={false}

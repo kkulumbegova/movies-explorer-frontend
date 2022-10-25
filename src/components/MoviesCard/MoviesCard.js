@@ -32,7 +32,7 @@ const isSavedButtonClassName = `movie__button ${
 
   return (
     <>
-      <li className="movie__item" key={key}>
+      <li className="movie__item" key={isSavedPage ? key : id}>
         <div className="movie__description">
           <h2 className="movie__name">{nameRU}</h2>
           <p className="movie__duration">{converter(duration)}</p>

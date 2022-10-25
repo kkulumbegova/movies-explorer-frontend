@@ -11,7 +11,6 @@ export const register = (name, email, password) => {
     })
         .then(res => {
             if(res.ok) {
-                console.log('ok auth');
                 return res.json();
             }
             return Promise.reject('Ошибка');
@@ -36,3 +35,17 @@ export const authorize = (email, password) => {
         };
       })
   };
+
+  export const getContent = (token) => {
+    return fetch(`${BASE_URL}/users/me`, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      }
+    })
+      .then((res => res.json()))
+      .then(data => data);
+  }

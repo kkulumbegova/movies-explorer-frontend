@@ -92,7 +92,7 @@ export default function Register({ onRegister, message }) {
         />
         {errors?.password && <span id="password-error" className="form__input-error">{errors?.password?.message || "Что-то пошло не так..."}</span>}
         </div>
-        <span id="register-error" className="form__error">{message}</span>
+        <span id="register-error" className="form__error"></span>
         <button
           type="submit"
           name="submit"

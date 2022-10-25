@@ -11,30 +11,29 @@ export default function SavedMovies({ onMobileMenu, savedMovies, onDeleteMovie }
   const [isShort, setShort] = useState(false);
 
 useEffect(() => {
-  setFilteredSavedArray(savedMovies)
-}, [savedMovies, searchTerm])
+  searchMovies(searchTerm, isShort)
+}, [savedMovies])
 
-  function searchMovies(movies, searchTerm, isShort) {
+  function searchMovies(searchTerm, isShort) {
     !isShort ?
-      setFilteredSavedArray(movies.filter(movie => {
+      setFilteredSavedArray(savedMovies.filter(movie => {
        return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase())}
       ))
       :
-      setFilteredSavedArray(movies.filter(movie => {
+      setFilteredSavedArray(savedMovies.filter(movie => {
         return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40}
       ))
     }
     const sortArray = () => {
-      searchMovies(savedMovies, searchTerm, isShort);
+      searchMovies(searchTerm, isShort);
   }
 
   const handleCheckBoxClick = (e) => {
     const value = e.target.checked;
     setShort(value);
-    searchMovies(savedMovies, searchTerm, value);
+    searchMovies(searchTerm, value);
   }
   
-
   return (
     <>
       <Header onMobileMenu={onMobileMenu}/>
