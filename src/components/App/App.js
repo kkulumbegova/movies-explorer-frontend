@@ -52,6 +52,10 @@ useEffect(() => {
       .catch((err) => {
         console.log(err);
       });
+    mainApi
+    .getSavedMovies().then((res) => {
+        setSavedMovies(res);
+      })
   }}, [loggedIn]);
 
 

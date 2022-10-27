@@ -1,3 +1,5 @@
+import { BASE_URL } from "../utils/constants.js"
+
 class Api {
   constructor({ baseUrl }) {
     this.baseUrl = baseUrl;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ToggleButton from "../ToggleButton/ToggleButton.js";
 
-export default function SearchForm({ searchTerm, setSearchTerm, sortArray, onCheckBoxClick, isShort }) {
+export default function SearchForm({ searchTerm, setSearchTerm, sortArray, onCheckBoxClick, isShort, isDisabled}) {
   const [message, setMessage] = useState('');
 
   const onSubmit = (e) => {
@@ -22,6 +22,7 @@ export default function SearchForm({ searchTerm, setSearchTerm, sortArray, onChe
           placeholder="Фильм"
           className="search__input"
           value={searchTerm}
+          disabled={isDisabled}
           onChange={(e) => {
             setSearchTerm(e.target.value);
           }}
@@ -30,7 +31,7 @@ export default function SearchForm({ searchTerm, setSearchTerm, sortArray, onChe
           }}
         ></input>
          <span id="text-error" className="form__input-error">{message}</span>
-        <button type="submit" className="search__submit"></button>
+        <button type="submit" className="search__submit" disabled={isDisabled}></button>
       </div>
       <ToggleButton isChecked={isShort} onCheck={onCheckBoxClick} />
     </form>

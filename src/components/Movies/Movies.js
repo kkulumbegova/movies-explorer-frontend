@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js"
 import { useEffect, useState } from "react";
 import moviesApi from "../../utils/MoviesApi.js";
+import { SHORT_FILTER_MINUTES_DURATION } from "../../utils/constants.js";
 
 
 export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDeleteMovie, isLoading, setIsLoading }) {
@@ -11,7 +12,7 @@ export default function Movies({ onMobileMenu, onMovieSave, savedMovies, onDelet
   const [filteredArray, setFilteredArray] = useState([]);
   const [message, setMessage] = useState('');
   const [isShort, setShort] = useState(false);
-
+  const [isDisabled, setDisabled] = useState(false);
 
 useEffect(() => {
   if(localStorage.getItem('movies') && localStorage.getItem('search') && localStorage.getItem('isShort')) {
@@ -24,6 +25,7 @@ useEffect(() => {
 function searchMovies(searchTerm, isShort) {
   if(!localStorage.getItem('moviesMoviesFromApi')) {
     setIsLoading(true);
+    setDisabled(true);
     moviesApi
       .getItems()
       .then((movies) => {
@@ -34,7 +36,10 @@ function searchMovies(searchTerm, isShort) {
       .catch(() => {
         setMessage('Во время запроса произошла ошибка. Возможно проблема с соединением или сервер недоступен. Подождите немного и попробуйте еще раз');
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => {
+        setIsLoading(false);
+        setDisabled(false)
+      });
   } else {
     const movies = JSON.parse(localStorage.getItem('moviesMoviesFromApi'));
     filter(movies, searchTerm, isShort )
@@ -47,7 +52,7 @@ function searchMovies(searchTerm, isShort) {
      return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase())})
     :
     moviesFromApi.filter(movie => {
-      return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40})
+      return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40 })
     setFilteredArray(filteredArray);
     setMessage(filteredArray.length===0 ? "Ничего не найдено" : '')
     localStorage.setItem('search', searchTerm);
@@ -71,9 +76,11 @@ const handleCheckBoxClick = () => {
         sortArray={searchMovies}
         onCheckBoxClick={handleCheckBoxClick}
         isShort={isShort}
+        isDisabled={isDisabled}
         isSavedPage={false}
         />
-        <MoviesCardList message={message} isSavedPage={false} movies={filteredArray} onMovieSave={onMovieSave} onDeleteMovie={onDeleteMovie} savedMovies={savedMovies} isLoading={isLoading} setIsLoading={setIsLoading}/>
+        <MoviesCardList message={message} isSavedPage={false} movies={filteredArray} onMovieSave={onMovieSave} onDeleteMovie={onDeleteMovie} savedMovies={savedMovies} isLoading={isLoading} setIsLoading={setIsLoading}
+        />
       </main>
       <Footer />
     </>

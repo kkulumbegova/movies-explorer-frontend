@@ -1,6 +1,6 @@
 import converter from '../../utils/Converter.js'
 
-export default function MoviesCard({country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId,  id, key, onMovieSave, savedMovies, onDeleteMovie, isSavedPage, movie }) {
+export default function MoviesCard({country, director, duration, year, description, image, trailerLink, nameRU, nameEN, thumbnail, movieId,  id, key, myKey, onMovieSave, savedMovies, onDeleteMovie, isSavedPage, movie }) {
 
 const isSaved = savedMovies.some((el) => el.movieId === movieId);
 
@@ -32,7 +32,7 @@ const isSavedButtonClassName = `movie__button ${
 
   return (
     <>
-      <li className="movie__item" key={isSavedPage ? key : id}>
+      <li className="movie__item">
         <div className="movie__description">
           <h2 className="movie__name">{nameRU}</h2>
           <p className="movie__duration">{converter(duration)}</p>

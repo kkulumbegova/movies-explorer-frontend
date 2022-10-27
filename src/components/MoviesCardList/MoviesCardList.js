@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import MoviesCard from "../MoviesCard/MoviesCard.js";
 import Preloader from '../Preloader/Preloader.js';
+import {MOVIES_SERVER_URL} from '../../utils/constants.js'
 
 export default function MoviesCardList({ movies, isLoading, onMovieSave, savedMovies, onDeleteMovie, isSavedPage, message }) {
 const [cardsPerPage, setCardsPerPage] = useState(3);
@@ -53,7 +54,7 @@ function checkWindowSize() {
            nameRU={movie.nameRU}
            nameEN={movie.nameEN}
            trailerLink={movie.trailerLink}
-           image={`https://api.nomoreparties.co/${movie.image.url}`}
+           image={`${MOVIES_SERVER_URL}${movie.image.url}`}
            duration={movie.duration}
            movieId={movie.id}
            key={movie.id}
@@ -61,14 +62,15 @@ function checkWindowSize() {
            director={movie.director}
            year={movie.year}
            description={movie.description}
-           thumbnail={`https://api.nomoreparties.co/${movie.image.formats.thumbnail.url}`}
+           thumbnail={`${MOVIES_SERVER_URL}${movie.image.formats.thumbnail.url}`}
            onMovieSave={onMovieSave}
            savedMovies={savedMovies}
            onDeleteMovie={onDeleteMovie}
            isSavedPage={isSavedPage}
            >
         </MoviesCard>
-        ))}
+        ))
+      }
       </ul>
       <button className={addButtonClassName} onClick={handleLoadMoreCards}>Ещё</button>
        </>

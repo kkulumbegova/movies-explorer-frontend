@@ -3,6 +3,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList.js";
 import Footer from "../Footer/Footer.js";
 import Header from "../Header/Header.js";
 import { useEffect, useState } from "react";
+import { MOVIES_SERVER_URL } from '../../utils/constants.js'
 
 export default function SavedMovies({ onMobileMenu, savedMovies, onDeleteMovie }) {
   const [searchTerm, setSearchTerm] = useState('');
@@ -21,7 +22,7 @@ useEffect(() => {
       ))
       :
       setFilteredSavedArray(savedMovies.filter(movie => {
-        return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40}
+        return movie.nameRU.toLowerCase().includes(searchTerm.toLowerCase()) && movie.duration <= 40 }
       ))
     }
     const sortArray = () => {

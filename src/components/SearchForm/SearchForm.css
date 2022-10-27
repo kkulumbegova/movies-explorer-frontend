@@ -46,6 +46,19 @@
     padding: 0px;
     margin: 0px;
 }
+.search__submit:disabled {
+    /* display: block; */
+    background: url(../../images/find.svg) center no-repeat;
+    opacity: 0.5;
+    background-size: 100%;
+    width: 44px;
+    height: 44px;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: auto;
+}
+
 .search__submit:hover {
     opacity: .5;
 }
