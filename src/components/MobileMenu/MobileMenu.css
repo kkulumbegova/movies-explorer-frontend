@@ -1,0 +1,68 @@
+.mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 520px;
+    height: 100vh;
+    background-color: rgb(32, 32, 32);
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    z-index: 1;
+}
+@media screen and (max-width: 767px) {
+    .mobile {
+      width: 100%;
+    }
+}
+.mobile__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    padding-top: 159px;
+    text-align: center;
+}
+
+.mobile__link {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 22px;
+    text-decoration: none;
+}
+.mobile__link:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.mobile__profile {
+    padding-bottom: 90px;
+}
+
+.mobile_opened {
+    display: flex;
+    align-items: center;
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out;
+}
+
+.mobile__close-button {
+    padding: 0;
+    border: none;
+    background: url(../../images/close.svg) center no-repeat;
+    position: absolute;
+    background-size: 100%;
+    width: 35px;
+    height: 35px;
+    top: 7px;
+    right: 7px;
+    cursor: pointer;
+}
+.mobile__close-button:hover {
+    opacity: .8;
+}

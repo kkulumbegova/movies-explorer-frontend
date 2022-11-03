@@ -1,0 +1,139 @@
+.form__header {
+    margin: 0px;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 500;
+    padding: 0px 0px 40px;
+    text-align: left;
+}
+@media screen and (max-width: 470px) {
+    .form__header {
+        padding-bottom: 80px;
+    }
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 396px;
+}
+@media screen and (max-width: 470px) {
+    .form {
+        width: 260px;
+    }
+}
+
+.field {
+    position: relative;
+}
+
+.form__description {
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    color: rgb(139, 139, 139, 1);
+    margin: 0px 0px 5px;
+}
+
+.form__input {
+    margin: 0px 0px 24px;
+    padding-bottom: 10px;
+    border: none;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 1);
+    background-color: rgb(32, 32, 32);
+    border-bottom: 1px solid rgb(66, 66, 66, 1);
+    width: 396px;
+}
+@media screen and (max-width: 470px) {
+    .form__input {
+        align-items: center;
+        width: 260px;
+    }
+}
+.form__input_profile {
+    border-bottom: none;
+    margin-bottom: 17px;
+    padding-bottom: 16px;
+}
+
+.form__input:focus {
+    border: none;
+    outline: none;
+    border-bottom: 1px solid rgb(66, 133, 244, 1);
+}
+
+.form__input-error {
+    color: rgba(238, 52, 101, 1);
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 12px;
+    margin: 6px 0px 8px;
+    position: absolute;
+    top: 49px;
+    left: 0px;
+}
+
+.form__input-error_thin {
+    top: 26px;
+    margin-top: 4px;
+}
+.form__submit {
+    width: 396px;
+    height: 45px;
+    padding: 0px;
+    background-color: rgba(66, 133, 244, 1);
+    color: rgba(255, 255, 255, 1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: center;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+@media screen and (max-width: 470px) {
+    .form__submit {
+        width: 260px;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .form__submit {
+        margin: 222px 0px 14px;
+    }
+}
+.form__submit:hover {
+    opacity: 0.8;
+}
+.form__submit:disabled {
+    background-color: rgb(157, 189, 232);
+    pointer-events: none;
+}
+.form__submit_login {
+    margin: 221px 0px 16px;
+}
+
+@media screen and (max-width: 470px) {
+    .form__submit_login {
+        margin: 309px 0px 14px;
+    }
+}
+
+.form__submit_register {
+    margin: 14px 0px 16px;
+}
+@media screen and (max-width: 470px) {
+    .form__submit_register {
+        width: 260px;
+    }
+}
+.form__error {
+    color: rgba(238, 52, 101, 1);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 12px;
+    margin: 120px auto 8px;
+
+
+}

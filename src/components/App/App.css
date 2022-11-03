@@ -1,0 +1,41 @@
+.page {
+  background-color: rgba(32, 32, 32, 1);
+  font-family: Inter, Arial, sans-serif;
+  
+}
+.page__container {
+  max-width: 1280px;
+  min-width: 320px;
+  margin: 0px auto;
+}
+.section {
+  box-sizing: border-box;
+  padding: 0 70px;
+}
+
+@media screen and (max-width: 1023px) {
+  .section {
+      padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .section {
+      padding: 0 10px;
+  }
+}
+@media screen and (max-width: 1023px) {
+    .section_narrow_sides {
+        padding: 0 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+  .section_narrow_sides {
+    padding: 0 18px;
+  }
+}
+.section__center {
+  box-sizing: border-box;
+  padding: 0 442px;
+}
